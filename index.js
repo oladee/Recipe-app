@@ -28,7 +28,6 @@ form.addEventListener("submit", (e) => {
                 <p>${result[i].recipe.dishType}</p>
                 <p> ${result[i].recipe.ingredientLines.map(x => x)}</p>
                </div>
-               
              </div>
          `;
          
