@@ -5,29 +5,23 @@ search.onclick = function () {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     fetch(
-      "https://api.spoonacular.com/recipes/complexSearch?query=rice&diet=Gluten%20Free&apiKey=39a8e72180354f049246426883b030c8"
+      "https://edamam-recipe-search.p.rapidapi.com/search?q=chicken&rapidapi-key=d464b6cbaamsh3b3e3fd111ef555p14b10fjsnd04463426571"
     )
       .then((res) => res.json())
       .then((data) => {
-        let result = data.results;
+        let result = data.hits;
         console.log(result);
-        // for (var i = 0; i<result.length; i++) {
-        //   fetch(
-        //     `https://api.spoonacular.com/recipes/${result[i].id}/summary?apiKey=39a8e72180354f049246426883b030c8`
-        //   )
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //       console.log(data);
-        //       console.log(result)
-        // //       cardList.innerHTML += `
-        // //      <div class='card' id =${"image" + result[i].id}>
-        // //         <img src=${result[i].image}>
-        // //      <h2>${result[i].title}</h2>
-        // //     </div>
-        
-        // // `;
-        //     });
-        // }
+        for(var i = 0; i < result.length; i++){
+          cardList.innerHTML += `
+          <div class='card' >
+          <img class='card-image' src=${result[i].recipe.image}>
+           <h1>${result[i].recipe.label}</h1>
+           <p id='summary'>Summary: ${result[i].recipe.healthLabels[0]}, ${result[i].recipe.healthLabels[1]}</p>
+           
+         </div>
+     `;
+     
+        }
       });
   });
 };
