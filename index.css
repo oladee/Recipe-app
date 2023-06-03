@@ -71,6 +71,9 @@ form{
 .card-image{
     display: block;
 }
+#more-info{
+    display: none;
+}
 
 @media(min-width:1024px){
     #Preferences{
