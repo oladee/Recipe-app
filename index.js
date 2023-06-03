@@ -3,15 +3,17 @@ let search = document.getElementById("search");
 let form = document.getElementById("form");
 let prefer = document.getElementById('Preferences')
 let usein =document.getElementById('usein')
+let token = config.apiKey
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let useins = usein.value
   let selected = prefer.value
+  console.log(token)
       search.onclick = function(){
         cardList.innerHTML = ""
         fetch(
-          `https://edamam-recipe-search.p.rapidapi.com/search?q=${selected} ${useins}&rapidapi-key=d464b6cbaamsh3b3e3fd111ef555p14b10fjsnd04463426571`
+          `https://edamam-recipe-search.p.rapidapi.com/search?q=${selected} ${useins}&rapidapi-key=${token}`
         )
           .then((res) => res.json())
           .then((data) => {
